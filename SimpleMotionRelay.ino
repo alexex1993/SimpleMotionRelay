@@ -4,8 +4,8 @@
 TaskHandle_t SensorReadTask;
 TaskHandle_t RelayHandlerTask;
 
-int duration_on = 0;
-int duration_off = 0;
+float duration_on = 0.0;
+float duration_off = 0.0;
 bool Detection = false;
 
 
@@ -57,18 +57,17 @@ void setup()
       if(Detection == HIGH){
         Serial.println("Motion detected! Duration: " + String(duration_on) + " sec"); 
         digitalWrite(Relay, LOW);
-        duration_on++;
-        duration_off = 0;
+        duration_on = duration_on + 0.1;
+        duration_off = 0.0;
       }                    
 
       if(Detection == LOW){                  
         Serial.println("Clear");
-        digitalWrite(Relay, HIGH);
-        
-        duration_on = 0;
-        duration_off++;
+        duration_on = 0.0;
+        duration_off = duration_off + 0.1;
+        if (duration_off > 120.0) digitalWrite(Relay, HIGH);
       }             
-      delay(1000);
+      delay(100);
     }
 
   }
