@@ -66,6 +66,7 @@ void setup()
         duration_on = 0.0;
         duration_off = duration_off + 0.1;
         if (duration_off > 120.0) digitalWrite(Relay, HIGH);
+        
       }             
       delay(100);
     }
