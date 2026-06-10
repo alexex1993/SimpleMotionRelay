@@ -5,6 +5,14 @@
 - Light on/off on detect motion
 - Working in several cores ESP32
 
+## Build & Upload (PlatformIO)
+
+```sh
+pio run                 # build
+pio run -t upload       # flash the board
+pio device monitor      # serial monitor (115200 baud)
+```
+
 ## How to connect components
 
 | ESP32-C3 Board | RCWL-0516 |
